@@ -55,7 +55,7 @@ export class PacienteComponent {
       this.dataSource.sort = this.sort;
     }
 
-  filtrar(valor: Event){
+  filtrar(event: Event){
     this.dataSource.filter = (event.target as HTMLInputElement).value.trim().toLowerCase();
   }
 }
