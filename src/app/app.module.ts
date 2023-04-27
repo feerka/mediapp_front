@@ -19,6 +19,11 @@ import { ExamenEdicionComponent } from './pages/examen/examen-edicion/examen-edi
 import { MedicoDialogoComponent } from './pages/medico/medico-dialogo/medico-dialogo.component';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginatorImpl } from './material/mat-paginator';
+import { BuscarDialogoComponent } from './pages/buscar/buscar-dialogo/buscar-dialogo.component';
+import { BuscarComponent } from './pages/buscar/buscar.component';
+import { WizardComponent } from './pages/wizard/wizard.component';
+import { ReporteComponent } from './pages/reporte/reporte.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,11 @@ import { MatPaginatorImpl } from './material/mat-paginator';
     ConsultaEspecialidadComponent,
     EspecialidadEdicionComponent,
     ExamenEdicionComponent,
-    MedicoDialogoComponent
+    MedicoDialogoComponent,
+    BuscarDialogoComponent,
+    BuscarComponent,
+    WizardComponent,
+    ReporteComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +50,8 @@ import { MatPaginatorImpl } from './material/mat-paginator';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ],
   providers: [
     {provide: MatPaginatorIntl, useClass: MatPaginatorImpl}

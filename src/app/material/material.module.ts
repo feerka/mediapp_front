@@ -21,7 +21,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorImpl } from './mat-paginator';
 import { CustomDateAdapter } from './custom-adapter';
-
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -48,7 +52,12 @@ import { CustomDateAdapter } from './custom-adapter';
     MatNativeDateModule,
     MatExpansionModule,
     MatListModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatStepperModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatGridListModule,
+    MatTabsModule
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: MatPaginatorImpl },

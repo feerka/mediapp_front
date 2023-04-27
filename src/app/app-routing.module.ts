@@ -9,28 +9,35 @@ import { EspecialidadComponent } from './pages/especialidad/especialidad.compone
 import { EspecialidadEdicionComponent } from './pages/especialidad/especialidad-edicion/especialidad-edicion.component';
 import { ConsultaComponent } from './pages/consulta/consulta.component';
 import { ConsultaEspecialidadComponent } from './pages/consulta-especialidad/consulta-especialidad.component';
+import { WizardComponent } from './pages/wizard/wizard.component';
+import { BuscarComponent } from './pages/buscar/buscar.component';
+import { ReporteComponent } from './pages/reporte/reporte.component';
 
-const routes: Routes = [{
-  path: 'paciente', component: PacienteComponent, children: [
-    { path: 'nuevo', component: PacienteEdicionComponent },
-    { path: 'edicion/:id', component: PacienteEdicionComponent },
-  ]
-},
-{
-  path: 'examen', component: ExamenComponent, children: [
-    { path: 'nuevo', component: ExamenEdicionComponent },
-    { path: 'edicion/:id', component: ExamenEdicionComponent },
-  ]
-},
-{
-  path: 'especialidad', component: EspecialidadComponent, children: [
-    { path: 'nuevo', component: EspecialidadEdicionComponent },
-    { path: 'edicion/:id', component: EspecialidadEdicionComponent },
-  ]
-},
-{ path: 'medico', component: MedicoComponent },
-{ path: 'consulta', component: ConsultaComponent },
-{ path: 'consulta-especial', component: ConsultaEspecialidadComponent }
+const routes: Routes = [
+  {
+    path: 'paciente', component: PacienteComponent, children: [
+      { path: 'nuevo', component: PacienteEdicionComponent },
+      { path: 'edicion/:id', component: PacienteEdicionComponent },
+    ]
+  },
+  {
+    path: 'examen', component: ExamenComponent, children: [
+      { path: 'nuevo', component: ExamenEdicionComponent },
+      { path: 'edicion/:id', component: ExamenEdicionComponent },
+    ]
+  },
+  {
+    path: 'especialidad', component: EspecialidadComponent, children: [
+      { path: 'nuevo', component: EspecialidadEdicionComponent },
+      { path: 'edicion/:id', component: EspecialidadEdicionComponent },
+    ]
+  },
+  { path: 'medico', component: MedicoComponent },
+  { path: 'consulta', component: ConsultaComponent },
+  { path: 'consulta-especial', component: ConsultaEspecialidadComponent },
+  { path: 'consulta-wizard', component: WizardComponent },
+  { path: 'buscar', component: BuscarComponent },
+  { path: 'reporte', component: ReporteComponent }
 ];
 
 @NgModule({
