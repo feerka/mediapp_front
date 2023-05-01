@@ -13,18 +13,28 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class PacienteComponent {
 
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource?: MatTableDataSource<Paciente>;
+  dataSource: MatTableDataSource<Paciente>;
   displayedColumns: string[] = ['idPaciente', 'nombre', 'apellido', 'acciones'];
+  cantidad: number = 0;
 
-  constructor(private pacienteService: PacienteService,
-    private snackBar: MatSnackBar) { }
+  constructor(
+    private pacienteService: PacienteService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
-    
-    this.pacienteService.listar().subscribe(data => {
+
+    /*this.pacienteService.listar().subscribe(data => {
       this.crearTabla(data);
+    });*/
+
+    this.pacienteService.listarPageable(0, 10).subscribe(data => {
+      this.cantidad = data.totalElements;
+      this.dataSource = new MatTableDataSource(data.content);
+      this.dataSource.sort = this.sort;
     });
 
     this.pacienteService.getPacienteCambio().subscribe(data => {
@@ -40,22 +50,30 @@ export class PacienteComponent {
     });
   }
 
-    eliminar(id: number) {
-      this.pacienteService.eliminar(id).subscribe(() => {
-        this.pacienteService.listar().subscribe(data => {
-          this.pacienteService.setPacientecambio(data);
-          this.pacienteService.setMensajeCambio('SE ELIMINO');
-        });
+  eliminar(id: number) {
+    this.pacienteService.eliminar(id).subscribe(() => {
+      this.pacienteService.listar().subscribe(data => {
+        this.pacienteService.setPacientecambio(data);
+        this.pacienteService.setMensajeCambio('SE ELIMINO');
       });
-    }
-  
-    crearTabla(data: Paciente[]) {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    }
+    });
+  }
 
-  filtrar(event: Event){
+  crearTabla(data: Paciente[]) {
+    this.dataSource = new MatTableDataSource(data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  filtrar(valor: Event) {
     this.dataSource.filter = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  }
+
+  mostrarMas(e: any){
+    this.pacienteService.listarPageable(e.pageIndex, e.pageSize).subscribe(data => {
+      this.cantidad = data.totalElements;
+      this.dataSource = new MatTableDataSource(data.content);
+      this.dataSource.sort = this.sort;
+    });
   }
 }

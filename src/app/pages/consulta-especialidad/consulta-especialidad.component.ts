@@ -13,6 +13,7 @@ import { Paciente } from 'src/app/_model/paciente';
 import { ConsultaService } from 'src/app/_service/consulta.service';
 import { EspecialidadService } from 'src/app/_service/especialidad.service';
 import { ExamenService } from 'src/app/_service/examen.service';
+import { GenericService } from 'src/app/_service/generic.service';
 import { MedicoService } from 'src/app/_service/medico.service';
 import { PacienteService } from 'src/app/_service/paciente.service';
 

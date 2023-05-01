@@ -3,23 +3,32 @@ import { Injectable } from '@angular/core';
 import { Paciente } from '../_model/paciente';
 import { environment } from 'src/environments/environment.development';
 import { Subject } from 'rxjs';
+import { GenericService } from './generic.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PacienteService {
+export class PacienteService  extends GenericService<Paciente>{
 
   private pacienteCambio: Subject<Paciente[]> = new Subject<Paciente[]>();
   private mensajeCambio: Subject<string> = new Subject<string>();
-  private url: string = `${environment.HOST}/pacientes`;  //ES6  Template Strings ``
+  //private url: string = `${environment.HOST}/pacientes`;  //ES6  Template Strings ``
 
-  constructor(private http: HttpClient) { }
-  
-  listar(){ 
-    //return this.http.get(environment.HOST + "/pacientes");
-    return this.http.get<Paciente[]>(`${this.url}`); //ES6  Template Strings ``
+  constructor(protected http: HttpClient) {
+    super(
+      http,
+      `${environment.HOST}/pacientes`);
   }
-  listarPorId(id: number) {
+  
+  listarPageable(p: number, s:number){
+    return this.http.get<any>(`${this.url}/pageable?page=${p}&size=${s}`);
+  }
+
+  //listar(){ 
+    //return this.http.get(environment.HOST + "/pacientes");
+//return this.http.get<Paciente[]>(`${this.url}`); //ES6  Template Strings ``
+  //}
+/*   listarPorId(id: number) {
     return this.http.get<Paciente>(`${this.url}/${id}`);
   }
 
@@ -33,7 +42,7 @@ export class PacienteService {
 
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
-  }
+  } */
 
   //////////////////////////
   getPacienteCambio() {
