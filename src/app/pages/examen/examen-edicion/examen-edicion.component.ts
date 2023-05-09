@@ -81,6 +81,6 @@ export class ExamenEdicionComponent {
       });
     }
 
-    this.router.navigate(['examen']);
+    this.router.navigate(['pages/examen']);
   }
 }

@@ -82,7 +82,7 @@ export class PacienteEdicionComponent {
         });
       });
     }
-    this.router.navigate(['paciente']);
+    this.router.navigate(['/pages/paciente']);
   }
 
 

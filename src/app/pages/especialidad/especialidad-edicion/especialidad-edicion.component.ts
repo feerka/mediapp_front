@@ -77,7 +77,7 @@ export class EspecialidadEdicionComponent {
       });
     }
 
-    this.router.navigate(['especialidad']);
+    this.router.navigate(['pages/especialidad']);
   }
 
 }
