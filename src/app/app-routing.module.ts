@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { Not404Component } from './pages/not404/not404.component';
+import { RecuperarComponent } from './pages/login/recuperar/recuperar.component';
+import { TokenComponent } from './pages/login/recuperar/token/token.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'recuperar', component: RecuperarComponent, children: [
+      { path: ':token', component: TokenComponent }
+    ]
   },
   {
     path: 'pages',
